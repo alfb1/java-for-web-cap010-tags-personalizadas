@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+  <Resource name="FinanceiroDB"
+            auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3307/financeiro?serverTimezone=UTC&amp;autoReconnect=true"
+            username="root"
+            password="root"
+            maxActive="100"
+            maxIdle="30"
+            maxWait="10000"
+   />
+</Context>
