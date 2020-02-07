@@ -39,9 +39,9 @@ public class LancamentoDAOHibernate implements LancamentoDAO
 		if ( dataInicio != null && dataFim != null) {
 			criteria.add(Restrictions.between("data", dataInicio, dataFim));
 		}else if ( dataInicio != null) {
-			criteria.add(Restrictions.ge("data", dataInicio)); //maior ou igual
+			criteria.add(Restrictions.ge("data", dataInicio)); //Greater than or equal - maior ou igual
 		}else if (dataFim != null) {
-			criteria.add(Restrictions.le("data", dataFim)); //menor ou igual
+			criteria.add(Restrictions.le("data", dataFim)); // Less than or equal - menor ou igual
 		}
 		
 		criteria.add(Restrictions.eq("conta", conta));

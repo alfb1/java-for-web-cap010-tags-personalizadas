@@ -17,3 +17,5 @@ Início
  6.Uso de dataTable com Scroll
  
  7.Construção da classe LancamentoBean
+
+ 8.Tags personalizadas - composite components

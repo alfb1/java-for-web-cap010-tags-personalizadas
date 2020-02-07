@@ -20,7 +20,7 @@ public class LancamentoBean implements Serializable {
 	
 	private List<Lancamento> lista;
 	private Conta conta;
-	private List<Double> saldos;
+	private List<Double> saldos = new ArrayList<Double>();
 	private float saldoGeral;
 	private Lancamento editado = new Lancamento();
 	
@@ -65,6 +65,9 @@ public class LancamentoBean implements Serializable {
 		
 		if ( this.lista == null || this.conta != this.contextoBean.getContaAtiva()) 
 		{
+			System.out.println("get lista");
+			System.out.println("conta ativa" + this.contextoBean.getContaAtiva().getDescricao());
+			
 			this.conta = this.contextoBean.getContaAtiva();
 			
 			Calendar dataSaldo = new GregorianCalendar();
@@ -72,12 +75,12 @@ public class LancamentoBean implements Serializable {
 			dataSaldo.add(Calendar.DAY_OF_MONTH, -1);
 			
 			Calendar inicio = new GregorianCalendar();
-			inicio.add(Calendar.MONTH, -1);
+			inicio.add(Calendar.MONTH, 0);
 			
 			LancamentoRN lancamentoRN = new LancamentoRN();
 			
 			this.saldoGeral = lancamentoRN.saldo(this.conta, dataSaldo.getTime());
-			this.lista = lancamentoRN.listar(this.conta, inicio.getTime(), null);
+			this.lista = lancamentoRN.listar(this.conta, null, inicio.getTime());
 			
 			Categoria categoria = null;
 			double saldo = this.saldoGeral;
@@ -89,6 +92,10 @@ public class LancamentoBean implements Serializable {
 			   categoria = lancamento.getCategoria();
 			   saldo = saldo + ( lancamento.getValor().floatValue() + categoria.getFator() );
 			   this.saldos.add(saldo);
+			}
+			
+			if ( this.lista != null) {
+			 System.out.println("quantidade de itens : " + this.lista.size());
 			}
 		}
 		
